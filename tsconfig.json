@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "strict": true,
+        "esModuleInterop": true,      // Add this line
+        "skipLibCheck": true,          // Optional: to skip type checking of declaration files
+        "forceConsistentCasingInFileNames": true  // Optional: to ensure consistent casing in imports
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+}
