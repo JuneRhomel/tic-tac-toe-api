@@ -4,8 +4,7 @@ import GameModel from "../model/game.model";
 export default async function GetListPrevGamesDataSource(
     { start = 1, end = 10 }: { start: number, end: number }
 ): Promise<GameModel[]> {
-    await MongoDbClient.connect();
-    await MongoDbClient.db("admin").command({ ping: 1 });
+
 
     const skip = (start - 1) * end;
 

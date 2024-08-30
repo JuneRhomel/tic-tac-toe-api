@@ -3,8 +3,7 @@ import MongoDbClient from "../../mongodb/database_connection.monggodb";
 
 export default async function GetRoundsPrevGameDataSource({ gameId }: { gameId: string }) {
 
-    await MongoDbClient.connect();
-    await MongoDbClient.db("admin").command({ ping: 1 });
+
 
     const result = await MongoDbClient.db("tictactoe").collection("game")
         .findOne(

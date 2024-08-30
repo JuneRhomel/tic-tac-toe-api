@@ -9,8 +9,7 @@ export default async function StartGameDataSource({
     roundsModel: RoundsModel,
     gameId: string
 }) {
-    await MongoDbClient.connect();
-    await MongoDbClient.db("admin").command({ ping: 1 });
+
 
     const result = await MongoDbClient.db("tictactoe").collection("game").updateOne(
         {

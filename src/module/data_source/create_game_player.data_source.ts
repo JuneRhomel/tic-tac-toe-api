@@ -10,8 +10,7 @@ export default async function CreateGamePlayersDataSource(
         playerModel2: PlayerModel
     }
 ) {
-    MongoDbClient.connect();
-    MongoDbClient.db("admin").command({ ping: 1 });
+
     const result = await MongoDbClient.db("tictactoe").collection("game").insertOne({
         player1: instanceToPlain(playerModel1),
         player2: instanceToPlain(playerModel2),

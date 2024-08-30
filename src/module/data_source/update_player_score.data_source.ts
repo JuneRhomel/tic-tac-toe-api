@@ -12,8 +12,7 @@ export default async function UpdatePlayer1ScoreDataSource({
     score: number,
 
 }) {
-    await MongoDbClient.connect();
-    await MongoDbClient.db("admin").command({ ping: 1 });
+
 
     const result = await MongoDbClient.db("tictactoe").collection("game").updateOne(
         {
