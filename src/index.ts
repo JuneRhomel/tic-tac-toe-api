@@ -6,7 +6,7 @@ import GetListPrevGamesUseCase from './module/use_case/get_list_prev_games.use_c
 import GetRoundsPrevGameUseCase from './module/use_case/get_rounds_prev_game.data_source';
 import GetGameDetailsUseCase from './module/use_case/get_game_details.use_case';
 import MongoDbClient from './mongodb/database_connection.monggodb';
-import {  PORT } from './application/config/config';
+import { PORT } from './application/config/config';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 MongoDbClient.connect();
 MongoDbClient.db("admin").command({ ping: 1 });
+
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello World!');
+})
 
 app.post('/game', (req: Request, res: Response) => {
     return CreateGamePlayersUseCase({ req, res })
