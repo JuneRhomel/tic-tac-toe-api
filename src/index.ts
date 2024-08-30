@@ -17,8 +17,12 @@ app.use(cors({ origin: "*" }));
 MongoDbClient.connect();
 MongoDbClient.db("admin").command({ ping: 1 });
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
+app.listen(PORT, () => {
+    console.log(`Server is running `);
+});
+
+app.get("/", (req: Request, res: Response) => {
+    return res.status(200).json("Welcome")
 })
 
 app.post('/game', (req: Request, res: Response) => {
@@ -47,6 +51,3 @@ app.get('/game/:id', (req: Request, res: Response) => {
     return GetGameDetailsUseCase({ req, res })
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
