@@ -1,9 +1,4 @@
 import express, { Request, Response } from 'express';
-const { PORT } = require('../src/application/config/config');
-
-
-const app = express();
-
 import CreateGamePlayersUseCase from './module/use_case/create_game_player.use_case';
 import StartGameUseCase from './module/use_case/start_game.use_case';
 import EndGameUseCase from './module/use_case/end_game.use_case';
@@ -11,8 +6,11 @@ import GetListPrevGamesUseCase from './module/use_case/get_list_prev_games.use_c
 import GetRoundsPrevGameUseCase from './module/use_case/get_rounds_prev_game.data_source';
 import GetGameDetailsUseCase from './module/use_case/get_game_details.use_case';
 import MongoDbClient from './mongodb/database_connection.monggodb';
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import {  PORT } from './application/config/config';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+
+const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
