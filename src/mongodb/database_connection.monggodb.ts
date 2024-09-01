@@ -5,6 +5,7 @@ import { GetSecret } from "../application/config/secret";
 const MongoDbClient = async () => {
     const secret = await GetSecret();
     const DB = secret.connectionString;
+    console.log(DB)
     const client = new MongoClient(DB, {
         serverApi: {
             version: ServerApiVersion.v1,
