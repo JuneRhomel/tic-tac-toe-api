@@ -1,12 +1,21 @@
+import { MONGODB_URI } from "../application/config/config";
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const { MONGODB_URI } = require('../application/config/config');
+import { GetSecret } from "../application/config/secret";
 
-const MongoDbClient = new MongoClient(MONGODB_URI, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+const MongoDbClient = async () => {
+    const secret = await GetSecret();
+    const DB = secret.connectionString;
+    const client = new MongoClient(DB, {
+        serverApi: {
+            version: ServerApiVersion.v1,
+            strict: true,
+            deprecationErrors: true,
+        }
+    });
+    await client.connect();
+    await client.db("admin").command({ ping: 1 });
+    return client;
+}
+
 
 export default MongoDbClient

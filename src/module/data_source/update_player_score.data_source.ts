@@ -13,8 +13,9 @@ export default async function UpdatePlayer1ScoreDataSource({
 
 }) {
 
+    const client = await MongoDbClient()
 
-    const result = await MongoDbClient.db("tictactoe").collection("game").updateOne(
+    const result = await client.db("tictactoe").collection("game").updateOne(
         {
             _id: ObjectId.createFromHexString(gameId),
         },

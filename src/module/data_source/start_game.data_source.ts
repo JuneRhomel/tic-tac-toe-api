@@ -10,8 +10,8 @@ export default async function StartGameDataSource({
     gameId: string
 }) {
 
-
-    const result = await MongoDbClient.db("tictactoe").collection("game").updateOne(
+    const client = await MongoDbClient()
+    const result = await client.db("tictactoe").collection("game").updateOne(
         {
             _id: ObjectId.createFromHexString(gameId)
         },

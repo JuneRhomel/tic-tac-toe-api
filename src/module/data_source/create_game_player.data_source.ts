@@ -10,8 +10,8 @@ export default async function CreateGamePlayersDataSource(
         playerModel2: PlayerModel
     }
 ) {
-
-    const result = await MongoDbClient.db("tictactoe").collection("game").insertOne({
+    const client = await MongoDbClient()
+    const result = await client.db("tictactoe").collection("game").insertOne({
         player1: instanceToPlain(playerModel1),
         player2: instanceToPlain(playerModel2),
         createdAt: new Date()

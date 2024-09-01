@@ -4,8 +4,8 @@ import GameModel from "../model/game.model";
 
 export default async function GetGameDetailsDataSource({ gameId }: { gameId: string }): Promise<GameModel> {
 
-
-    const result = await MongoDbClient.db("tictactoe").collection("game").findOne(
+    const client = await MongoDbClient()
+    const result = await client.db("tictactoe").collection("game").findOne(
         {
             _id: ObjectId.createFromHexString(gameId)
         }

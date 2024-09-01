@@ -21,6 +21,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.637.0",
     "awilix": "^10.0.2",
     "class-transformer-validator": "^0.9.1",
     "class-validator": "^0.14.1",
